@@ -10,16 +10,11 @@ const getMarks = asyncHandler(async (req, res) => {
 });
 
 const createMark = asyncHandler(async (req, res) => {
-  if (!req.body.title) {
-    res.status(400);
-    throw new Error("Please add text fields");
-  }
+  const { markdownContent, sanitizedHtmlContent } = req.body;
 
-  const { title, desc, text } = req.body;
   const mark = await Mark.create({
-    title,
-    desc,
-    text,
+    draft: sanitizedHtmlContent,
+    markdown: markdownContent,
     user: req.user.id,
   });
 

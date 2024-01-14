@@ -7,14 +7,12 @@ const markSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
-    title: {
+   
+    draft: {
       type: String,
+      
     },
-    desc: {
-      type: String,
-      required: false,
-    },
-    text: {
+    markdown: {
       type: String,
     },
   },
